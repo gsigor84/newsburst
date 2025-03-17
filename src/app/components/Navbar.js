@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion"; // ✅ Import Framer Motion
 import { Menu, X, Globe } from "lucide-react";
@@ -7,17 +7,17 @@ import { Menu, X, Globe } from "lucide-react";
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [isVisible, setIsVisible] = useState(true);
-  let lastScrollY = 0;
+  const lastScrollY = useRef(0); // ✅ FIXED: Track scroll with useRef()
 
   // Track Scroll Direction
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > lastScrollY) {
+      if (window.scrollY > lastScrollY.current) {
         setIsVisible(false); // Hide navbar when scrolling down
       } else {
         setIsVisible(true); // Show navbar when scrolling up
       }
-      lastScrollY = window.scrollY;
+      lastScrollY.current = window.scrollY; // ✅ Correctly update the ref value
     };
 
     window.addEventListener("scroll", handleScroll);
