@@ -1,13 +1,13 @@
 "use client";
 import React, { useState, useEffect, useRef } from "react";
 import Link from "next/link";
-import { motion, AnimatePresence } from "framer-motion"; // ✅ Import Framer Motion
+import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, Globe } from "lucide-react";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [isVisible, setIsVisible] = useState(true);
-  const lastScrollY = useRef(0); // ✅ FIXED: Track scroll with useRef()
+  const lastScrollY = useRef(0); // ✅ UseRef to track scroll position
 
   // Track Scroll Direction
   useEffect(() => {

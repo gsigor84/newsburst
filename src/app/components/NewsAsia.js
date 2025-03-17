@@ -1,10 +1,10 @@
 "use client";
-import React, { useEffect, useState, useMemo } from "react";
+import React, { useEffect, useState, useMemo, useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import Image from "next/image";
 
-export default function NewsAsia() {
+const NewsAsia = () => {
   const [news, setNews] = useState([]);
 
   useEffect(() => {
@@ -22,11 +22,11 @@ export default function NewsAsia() {
     fetchAsiaNews();
   }, []);
 
-  // ✅ Ensure refs are correctly created
-  const refs = useMemo(() => (Array.isArray(news) ? news.map(() => React.createRef()) : []), [news]);
+  // ✅ Ensure refs are correctly created at the top level
+  const refs = useMemo(() => news.map(() => ({ current: null })), [news]);
 
   return (
-    <div className="min-h-screen bg-dark-blue text-white">
+    <div className="min-h-screen bg-dark-blue text-white p-2">
       <div className="max-w-4xl mx-auto">
         {news.length > 0 ? (
           news.map((article, index) => (
@@ -38,7 +38,7 @@ export default function NewsAsia() {
       </div>
     </div>
   );
-}
+};
 
 // ✅ Reusable Headline Block Component
 const HeadlineBlock = React.forwardRef(({ article }, ref) => {
@@ -99,3 +99,9 @@ const HeadlineBlock = React.forwardRef(({ article }, ref) => {
     </motion.div>
   );
 });
+
+// ✅ Assign display names
+HeadlineBlock.displayName = "HeadlineBlock";
+NewsAsia.displayName = "NewsAsia";
+
+export default NewsAsia;
