@@ -33,21 +33,21 @@ const NewsIsrael = () => {
             <HeadlineBlock key={article._id} article={article} ref={refs[index]} />
           ))
         ) : (
-          <p className="text-center text-gray-400 text-lg">No Israel news available.</p>
+          <p className="text-center text-white text-lg">No Israel news available.</p>
         )}
       </div>
     </div>
   );
 };
 
-// ✅ Reusable Headline Block Component
+// ✅ Reusable Headline Block Component (Fully White Styling)
 const HeadlineBlock = React.forwardRef(({ article }, ref) => {
   const isInView = useInView(ref, { amount: 0.5 });
 
   return (
     <motion.div
       ref={ref}
-      className="p-3 mb-6 flex flex-col border-l-4 border-red-500"
+      className="p-3 mb-6 flex flex-col border-l-4 border-white" // ✅ White border
       initial={{ opacity: 0.5, scale: 0.9 }}
       animate={{
         opacity: isInView ? 1 : 0.3,
@@ -83,14 +83,14 @@ const HeadlineBlock = React.forwardRef(({ article }, ref) => {
           href={article.url}
           target="_blank"
           rel="noopener noreferrer"
-          className="text-red-500 hover:scale-110 transition-transform inline-block"
+          className="text-white hover:scale-110 transition-transform inline-block"
         >
           <ArrowRight size={30} strokeWidth={3} className="-rotate-45" />
         </a>
       </div>
 
       {/* Line Separator */}
-      <div className="w-full h-[1px] bg-white my-2"></div>
+      <div className="w-full h-[1px] bg-white my-2"></div> {/* ✅ White Line */}
 
       {/* Text Content */}
       <motion.h2 className="text-2xl sm:text-3xl font-headline font-bold text-white leading-snug">

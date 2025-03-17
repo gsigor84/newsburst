@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useState, useMemo, useRef } from "react";
+import React, { useEffect, useState, useMemo } from "react";
 import { motion, useInView } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 
@@ -32,21 +32,21 @@ const NewsBlog = ({ apiEndpoint }) => {
             <HeadlineBlock key={article._id} article={article} ref={refs[index]} />
           ))
         ) : (
-          <p className="text-center text-gray-400 text-lg">No blog news available.</p>
+          <p className="text-center text-white text-lg">No blog news available.</p>
         )}
       </div>
     </div>
   );
 };
 
-// ✅ Headline Block Component (NO IMAGE, ONLY TEXT & ARROW)
+// ✅ Standardized Headline Block Component (No Image, Only Text & Arrow)
 const HeadlineBlock = React.forwardRef(({ article }, ref) => {
   const isInView = useInView(ref, { amount: 0.5 });
 
   return (
     <motion.div
       ref={ref}
-      className="p-3 mb-6 flex flex-col border-l-4 border-teal-400"
+      className="p-3 mb-6 flex flex-col border-l-4 border-white"
       initial={{ opacity: 0.5, scale: 0.9 }}
       animate={{
         opacity: isInView ? 1 : 0.3,
@@ -59,11 +59,11 @@ const HeadlineBlock = React.forwardRef(({ article }, ref) => {
         delay: 0.3,
       }}
     >
-      {/* Text Content (Headline & Date) */}
+      {/* Headline & Date */}
       <motion.h2 className="text-2xl sm:text-3xl font-headline font-bold text-white leading-snug">
         {article.headline}
       </motion.h2>
-      <p className="text-gray-400 text-sm mt-1">{article.date}</p>
+      <p className="text-white text-sm mt-1">{article.date}</p>
 
       {/* Line Separator */}
       <div className="w-full h-[1px] bg-white my-2"></div>
@@ -74,7 +74,7 @@ const HeadlineBlock = React.forwardRef(({ article }, ref) => {
           href={article.url}
           target="_blank"
           rel="noopener noreferrer"
-          className="text-teal-400 hover:scale-110 transition-transform inline-block"
+          className="text-white hover:scale-110 transition-transform inline-block"
         >
           <ArrowRight size={30} strokeWidth={3} className="-rotate-45" />
         </a>

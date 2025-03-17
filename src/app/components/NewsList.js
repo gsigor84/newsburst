@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useState, useMemo } from "react";
+import React, { useEffect, useState, useMemo, useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import Image from "next/image";
@@ -33,21 +33,21 @@ const NewsList = ({ apiEndpoint }) => {
             <HeadlineBlock key={article._id} article={article} ref={refs[index]} />
           ))
         ) : (
-          <p className="text-center text-gray-400 text-lg">No news available.</p>
+          <p className="text-center text-white text-lg">No news available.</p>
         )}
       </div>
     </div>
   );
 };
 
-// ✅ Reusable Headline Block Component
+// ✅ Reusable Headline Block Component (All White)
 const HeadlineBlock = React.forwardRef(({ article }, ref) => {
   const isInView = useInView(ref, { amount: 0.5 });
 
   return (
     <motion.div
       ref={ref}
-      className="p-3 mb-6 flex flex-col border-l-4 border-blue-500"
+      className="p-3 mb-6 flex flex-col border-l-4 border-white" // ✅ Border is white
       initial={{ opacity: 0.5, scale: 0.9 }}
       animate={{
         opacity: isInView ? 1 : 0.3,
@@ -67,7 +67,7 @@ const HeadlineBlock = React.forwardRef(({ article }, ref) => {
           <div className="w-[80px] h-[60px]">
             <Image
               src={article.image}
-              alt={article.headline}
+              alt={article.headline || "News image"}
               width={80}
               height={60}
               className="object-cover shadow-lg w-full h-full rounded"
@@ -83,7 +83,7 @@ const HeadlineBlock = React.forwardRef(({ article }, ref) => {
           href={article.url}
           target="_blank"
           rel="noopener noreferrer"
-          className="text-blue-500 hover:scale-110 transition-transform inline-block"
+          className="text-white hover:scale-110 transition-transform inline-block"
         >
           <ArrowRight size={30} strokeWidth={3} className="-rotate-45" />
         </a>
