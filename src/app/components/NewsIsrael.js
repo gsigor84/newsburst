@@ -12,42 +12,36 @@ const NewsIsrael = () => {
       try {
         const response = await fetch("/api/news/israel");
         const data = await response.json();
-        setNews(Array.isArray(data) ? data : []); // ✅ Ensure `news` is always an array
+        setNews(Array.isArray(data) ? data : []);
       } catch (error) {
         console.error("Error fetching Israel news:", error);
-        setNews([]); // ✅ Fallback to empty array in case of error
+        setNews([]);
       }
     };
 
     fetchIsraelNews();
   }, []);
 
-  // ✅ Ensure refs persist correctly using `useMemo()`
-  const refs = useMemo(() => news.map(() => ({ current: null })), [news]);
+  const refs = useMemo(() => news.map(() => React.createRef()), [news]);
 
   return (
-    <div className="min-h-screen bg-dark-blue text-white p-4">
-      <div className="max-w-4xl mx-auto">
-        {news.length > 0 ? (
-          news.map((article, index) => (
-            <HeadlineBlock key={article._id} article={article} ref={refs[index]} />
-          ))
-        ) : (
-          <p className="text-center text-white text-lg">No Israel news available.</p>
-        )}
+    <div className="min-h-screen bg-dark-blue pr-4">
+      <div className="max-w-xl mx-auto space-y-6">
+        {news.map((article, index) => (
+          <NewsCard key={article._id} article={article} ref={refs[index]} />
+        ))}
       </div>
     </div>
   );
 };
 
-// ✅ Reusable Headline Block Component (Fully White Styling)
-const HeadlineBlock = React.forwardRef(({ article }, ref) => {
+const NewsCard = React.forwardRef(({ article }, ref) => {
+  const isValidImage = article.image && article.image.startsWith("http");
   const isInView = useInView(ref, { amount: 0.5 });
 
   return (
     <motion.div
       ref={ref}
-      className="p-3 mb-6 flex flex-col border-l-4 border-white" // ✅ White border
       initial={{ opacity: 0.5, scale: 0.9 }}
       animate={{
         opacity: isInView ? 1 : 0.3,
@@ -59,49 +53,47 @@ const HeadlineBlock = React.forwardRef(({ article }, ref) => {
         damping: 14,
         delay: 0.3,
       }}
+      className="not-prose overflow-hidden rounded-lg"
     >
-      {/* Image & Arrow Container */}
-      <div className="flex justify-between items-center">
-        {/* Image (Left) */}
-        {article.image && article.image.startsWith("http") ? (
-          <div className="w-[80px] h-[60px]">
-            <Image
-              src={article.image}
-              alt={article.headline}
-              width={80}
-              height={60}
-              className="object-cover shadow-lg w-full h-full rounded"
-              priority
-            />
-          </div>
-        ) : (
-          <div className="w-[80px] h-[60px]"></div> // ✅ Empty div for spacing when no image
-        )}
-
-        {/* Arrow (Right) */}
-        <a
-          href={article.url}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-white hover:scale-110 transition-transform inline-block"
-        >
-          <ArrowRight size={30} strokeWidth={3} className="-rotate-45" />
-        </a>
+      {/* Line + Arrow */}
+      <div className="relative max-w-sm mx-auto mb-2">
+        <div className="absolute -top-1 right-0 z-10">
+          <ArrowRight size={30} strokeWidth={3} className="-rotate-45 text-white" />
+        </div>
+        <div className="w-full h-[1px] bg-white" />
       </div>
 
-      {/* Line Separator */}
-      <div className="w-full h-[1px] bg-white my-2"></div> {/* ✅ White Line */}
+      {/* Card Content */}
+      <div className="relative mx-auto flex max-w-sm items-center ring-1 ring-black/5 min-h-[96px]">
+        {/* Floating Image */}
+        <Image
+          src={isValidImage ? article.image : "/placeholder.jpg"}
+          alt={article.headline}
+          width={96}
+          height={96}
+          className="absolute -left-9 h-24 w-24 rounded-full shadow-lg object-cover"
+          priority
+        />
 
-      {/* Text Content */}
-      <motion.h2 className="text-2xl sm:text-3xl font-headline font-bold text-white leading-snug">
-        {article.headline}
-      </motion.h2>
+        {/* Headline Text */}
+        <div className="flex flex-col pl-20 pr-4">
+          <a
+            href={article.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:underline"
+          >
+            <strong className="text-lg sm:text-lg font-headline font-bold text-white leading-snug">
+              {article.headline}
+            </strong>
+          </a>
+        </div>
+      </div>
     </motion.div>
   );
 });
 
-// ✅ Assign display names to prevent React warnings
-HeadlineBlock.displayName = "HeadlineBlock";
+NewsCard.displayName = "NewsCard";
 NewsIsrael.displayName = "NewsIsrael";
 
 export default NewsIsrael;

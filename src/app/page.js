@@ -6,7 +6,7 @@ import NewsBlog from "./components/NewsBlog";
 
 export default function Home() {
   return (
-    <div className="bg-dark-blue text-white min-h-screen p-2">
+    <div className="bg-dark-blue text-white min-h-screen ">
       {/* General News Section */}
       <section className="mb-10">
 

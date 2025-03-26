@@ -32,11 +32,12 @@ export default function Navbar() {
           }`}
       >
         <div className="max-w-6xl mx-auto flex justify-between items-center">
-          {/* Logo - Globe Icon Inside a Circle */}
-          <Link href="/" className="flex items-center gap-2">
+          {/* ✅ Logo - Globe Icon + NewsBurst Text */}
+          <Link href="/" className="flex items-center gap-3">
             <div className="w-10 h-10 flex items-center justify-center rounded-full border-2 border-white">
               <Globe size={24} strokeWidth={2.5} />
             </div>
+            <span className="text-white font-bold text-lg tracking-wide">NewsBurst</span>
           </Link>
 
           {/* Desktop Navigation */}
