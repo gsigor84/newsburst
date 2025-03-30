@@ -28,16 +28,16 @@ export default function Navbar() {
     <>
       {/* Navbar */}
       <motion.nav
-        className={`bg-dark-blue/70 backdrop-blur-md text-white py-2 px-4 shadow-lg fixed top-0 left-0 w-[calc(100%-1rem)] mx-2 z-50 rounded-2xl transition-all duration-300 ${isVisible ? "translate-y-0 opacity-100" : "-translate-y-full opacity-0"
+        className={` backdrop-blur-md text-nav py-2 px-4 shadow-lg fixed top-0 left-0 w-[calc(100%-1rem)] mx-2 z-50 rounded-2xl transition-all duration-300 ${isVisible ? "translate-y-0 opacity-100" : "-translate-y-full opacity-0"
           }`}
       >
         <div className="max-w-6xl mx-auto flex justify-between items-center">
           {/* ✅ Logo - Globe Icon + NewsBurst Text */}
           <Link href="/" className="flex items-center gap-3">
-            <div className="w-10 h-10 flex items-center justify-center rounded-full border-2 border-white">
+            <div className="w-10 h-10 flex items-center justify-center rounded-full border-2 border-nav">
               <Globe size={24} strokeWidth={2.5} />
             </div>
-            <span className="text-white font-bold text-lg tracking-wide">NewsBurst</span>
+            <span className="text-nav font-bold text-lg tracking-wide">NewsBurst</span>
           </Link>
 
           {/* Desktop Navigation */}
@@ -50,7 +50,7 @@ export default function Navbar() {
 
           {/* Mobile Menu Button */}
           <button
-            className="md:hidden text-white focus:outline-none"
+            className="md:hidden text-nav focus:outline-none"
             onClick={() => setIsOpen(true)}
           >
             <Menu size={28} />

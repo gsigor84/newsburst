@@ -2,17 +2,14 @@
 
 :root {
   --color-primary: #F23545;
-  /* Red */
   --color-secondary: #F2506E;
-  /* Light Red */
   --color-dark-blue: #03178C;
-  /* Dark Blue */
   --color-blue: #03318C;
-  /* Blue */
   --color-teal: #04BFAD;
-  /* Teal */
-  --color-background: var(--color-dark-blue);
-  /* Set the default background color */
+  --color-nav: #0D0D0D;
+  /* 🎯 Update background here */
+  --color-background: #F2F2F2;
+
   --font-headline: "Futura Extra Black", sans-serif;
   --font-body: "Avenir LT Pro", sans-serif;
 }
@@ -47,8 +44,11 @@
   font-style: normal;
 }
 
+/* Global Utility Classes */
+.bg-nav {
+  background-color: var(--color-nav)
+}
 
-/* Apply globally */
 .bg-primary {
   background-color: var(--color-primary);
 }
@@ -92,5 +92,4 @@
 body {
   background-color: var(--color-background);
   color: var(--foreground);
-
 }

@@ -56,7 +56,7 @@ const BitcoinPriceList = () => {
   }, [cryptoData, sortBy]);
 
   return (
-    <div className="min-h-screen bg-dark-blue text-white p-4">
+    <div className="min-h-screen text-nav p-4">
       <div className="max-w-4xl mx-auto">
         {/* States */}
         {isLoading && <div>Loading...</div>}
@@ -73,7 +73,7 @@ const BitcoinPriceList = () => {
               href={`https://coinmarketcap.com/currencies/${token.symbol.toLowerCase()}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-[#010326] border border-white/10 p-4 rounded-xl shadow hover:scale-105 transition-transform"
+              className="bg-[#F2F2F2] border border-white/10 p-4 rounded-xl shadow hover:scale-105 transition-transform"
             >
               <div className="flex items-center gap-2 mb-2">
                 <Avatar
@@ -87,10 +87,11 @@ const BitcoinPriceList = () => {
                     bgcolor: "#03318C",
                   }}
                 />
-                <h2 className="text-xl font-bold">{token.symbol}</h2>
+                <h2 className="text-xl font-bold text-gray-800">{token.symbol}</h2>
+
               </div>
 
-              <div className="flex items-center text-sm mb-1">
+              <div className="flex items-center text-sm mb-1 text-gray-800">
                 <AttachMoneyIcon fontSize="small" className="mr-1 opacity-80" />
                 {formatter.format(token.price_usd)}
               </div>

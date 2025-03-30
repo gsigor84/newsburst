@@ -36,7 +36,7 @@ const NewsCardExample = ({ apiEndpoint }) => {
   const refs = useMemo(() => news.map(() => React.createRef()), [news]);
 
   return (
-    <div className="min-h-screen bg-dark-blue pr-4 py-10">
+    <div className="min-h-screen pr-4 py-10">
       <div className="max-w-xl mx-auto space-y-6">
         {loading && (
           <div className="space-y-4">
@@ -87,9 +87,9 @@ const NewsCard = React.forwardRef(({ article }, ref) => {
         sx={{
           display: "flex",
           alignItems: "center",
-          bgcolor: "#010326",
+          bgcolor: "#F2F2F2",
           borderRadius: 2,
-          color: "white",
+          color: "#0D0D0D",
           px: 2,
           py: 1.5,
           position: "relative",
@@ -119,7 +119,7 @@ const NewsCard = React.forwardRef(({ article }, ref) => {
             <Typography
               variant="subtitle1"
               fontWeight="bold"
-              sx={{ lineHeight: 1.3, color: "white" }}
+              sx={{ lineHeight: 1.3, color: "#0D0D0D" }}
             >
               {article.headline}
             </Typography>
@@ -132,7 +132,7 @@ const NewsCard = React.forwardRef(({ article }, ref) => {
             position: "absolute",
             right: 8,
             top: 8,
-            color: "white",
+            color: "#0D0D0D",
             transform: "rotate(-45deg)",
           }}
         />
