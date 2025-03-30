@@ -36,7 +36,7 @@ const NewsAsia = () => {
   const refs = useMemo(() => news.map(() => React.createRef()), [news]);
 
   return (
-    <div className="min-h-screen  pr-4 py-6">
+    <div className="min-h-screen  pr-4 py-4">
       <div className="max-w-xl mx-auto space-y-6">
         {loading && (
           <div className="space-y-4">
@@ -132,7 +132,7 @@ const NewsCard = React.forwardRef(({ article }, ref) => {
             position: "absolute",
             right: 8,
             top: 8,
-            color: "white",
+            color: "#0D0D0D",
             transform: "rotate(-45deg)",
           }}
         />

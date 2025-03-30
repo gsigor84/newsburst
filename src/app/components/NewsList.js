@@ -36,7 +36,7 @@ const NewsCardExample = ({ apiEndpoint }) => {
   const refs = useMemo(() => news.map(() => React.createRef()), [news]);
 
   return (
-    <div className="min-h-screen pr-4 py-10">
+    <div className="min-h-screen pr-4 py-4">
       <div className="max-w-xl mx-auto space-y-6">
         {loading && (
           <div className="space-y-4">

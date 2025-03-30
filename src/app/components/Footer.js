@@ -5,7 +5,7 @@ import { Globe, Twitter, Facebook, Instagram } from "lucide-react";
 
 export default function Footer() {
   return (
-    <footer className="bg-dark-blue text-white py-6 mt-10">
+    <footer className="bg-nav text-white py-6 mt-10">
       <div className="max-w-6xl mx-auto px-4 flex flex-col sm:flex-row justify-between items-center gap-4">
 
         {/* Left Side - Logo or Brand */}
