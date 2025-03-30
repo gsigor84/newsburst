@@ -2,14 +2,13 @@ import NewsList from "./components/NewsList";
 import NewsAsia from "./components/NewsAsia";
 import NewsIsrael from "./components/NewsIsrael";
 import NewsBlog from "./components/NewsBlog";
-
+import BitcoinPriceList from "./components/bitcoin/BitcoinPriceList";
 
 export default function Home() {
   return (
-    <div className="bg-dark-blue text-white min-h-screen ">
+    <div className="bg-dark-blue text-white min-h-screen">
       {/* General News Section */}
       <section className="mb-10">
-
         <NewsList apiEndpoint="/api/news" />
       </section>
 
@@ -21,13 +20,13 @@ export default function Home() {
 
       {/* Israel News Section */}
       <section className="mb-10">
-        <h2 className="text-xl font-bold text-white text-center mb-6">Israel </h2>
+        <h2 className="text-xl font-bold text-white text-center mb-6">Israel</h2>
         <NewsIsrael />
       </section>
-
+      {/* Bitcoin Prices Section */}
       <section className="mb-10">
-        <h2 className="text-xl font-bold text-white text-center mb-6">Blogs </h2>
-        <NewsBlog apiEndpoint="/api/news/blog" />
+        <h2 className="text-xl font-bold text-white text-center mb-6">Bitcoin Prices</h2>
+        <BitcoinPriceList />
       </section>
     </div>
   );
