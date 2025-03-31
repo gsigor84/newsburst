@@ -56,7 +56,7 @@ const BitcoinPriceList = () => {
   }, [cryptoData, sortBy]);
 
   return (
-    <div className="min-h-screen py-10 px-4 bg-[#F2F2F2] text-gray-900">
+    <div className="min-h-screen py-10 bg-[#F2F2F2] text-gray-900">
       <div className="max-w-4xl mx-auto">
         {/* Section Title */}
         <h2 className="text-2xl font-headline font-bold mb-6 text-center text-gray-800">
@@ -113,8 +113,8 @@ const BitcoinPriceList = () => {
               {/* Change */}
               <div
                 className={`flex items-center text-sm ${token.change_24h >= 0
-                    ? "text-green-500"
-                    : "text-red-500"
+                  ? "text-green-500"
+                  : "text-red-500"
                   }`}
                 title={`${token.change_24h >= 0 ? "Increased" : "Decreased"
                   } by ${Math.abs(token.change_24h).toFixed(2)}%`}
