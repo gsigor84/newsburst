@@ -5,26 +5,27 @@ import BitcoinPriceList from "./components/bitcoin/BitcoinPriceList";
 
 export default function Home() {
   return (
-    <div className="bg-#0D0D0D text-white min-h-screen">
+    <div className="bg-[#F2F2F2] text-gray-900 min-h-screen">
       {/* General News Section */}
-      <section className="mb-10">
+      <section className="mb-6">
         <NewsList apiEndpoint="/api/news" />
       </section>
 
       {/* Asia News Section */}
-      <section className="mb-10">
-        <h2 className="text-xl font-bold text-black text-center mb-6">Asia</h2>
+      <section className="mb-6 ">
+        <h2 className="text-2xl font-headline font-bold text-center mb-6">Asia</h2>
         <NewsAsia />
       </section>
 
       {/* Israel News Section */}
-      <section className="mb-10">
-        <h2 className="text-xl font-bold text-black  text-center mb-6">Israel</h2>
+      <section className="mb-6">
+        <h2 className="text-2xl font-headline font-bold text-center mb-6">Israel</h2>
         <NewsIsrael />
       </section>
+
       {/* Bitcoin Prices Section */}
-      <section className="mb-10">
-        <h2 className="text-xl font-bold text-black text-center mb-6">Bitcoin Prices</h2>
+      <section className="mb-6">
+
         <BitcoinPriceList />
       </section>
     </div>

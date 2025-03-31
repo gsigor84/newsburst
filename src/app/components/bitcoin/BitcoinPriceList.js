@@ -5,7 +5,7 @@ import AttachMoneyIcon from "@mui/icons-material/AttachMoney";
 import ArrowDropUpIcon from "@mui/icons-material/ArrowDropUp";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 
-// Map symbols to logo URLs (or use a library like react-crypto-logos)
+// Map symbols to logo URLs
 const tokenLogos = {
   BTC: "https://cryptologos.cc/logos/bitcoin-btc-logo.png",
   ETH: "https://cryptologos.cc/logos/ethereum-eth-logo.png",
@@ -56,25 +56,37 @@ const BitcoinPriceList = () => {
   }, [cryptoData, sortBy]);
 
   return (
-    <div className="min-h-screen text-nav p-4">
+    <div className="min-h-screen py-10 px-4 bg-[#F2F2F2] text-gray-900">
       <div className="max-w-4xl mx-auto">
-        {/* States */}
-        {isLoading && <div>Loading...</div>}
-        {hasError && <div>Error loading data. Please try again later.</div>}
+        {/* Section Title */}
+        <h2 className="text-2xl font-headline font-bold mb-6 text-center text-gray-800">
+          Live Cryptocurrency Prices
+        </h2>
+
+        {/* Loading / Error States */}
+        {isLoading && (
+          <div className="text-center text-gray-500">Loading prices...</div>
+        )}
+        {hasError && (
+          <div className="text-center text-red-500">
+            Error loading data. Please try again later.
+          </div>
+        )}
         {!isLoading && !cryptoData.length && !hasError && (
-          <div>No data available.</div>
+          <div className="text-center text-gray-500">No data available.</div>
         )}
 
         {/* Token Cards */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
+        <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 mt-4">
           {sortedData.map((token) => (
             <a
               key={token.symbol}
               href={`https://coinmarketcap.com/currencies/${token.symbol.toLowerCase()}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-[#F2F2F2] border border-white/10 p-4 rounded-xl shadow hover:scale-105 transition-transform"
+              className="bg-white border border-gray-200 p-4 rounded-xl shadow-sm hover:shadow-lg transition-transform transform hover:scale-105"
             >
+              {/* Logo & Symbol */}
               <div className="flex items-center gap-2 mb-2">
                 <Avatar
                   src={tokenLogos[token.symbol]}
@@ -87,17 +99,22 @@ const BitcoinPriceList = () => {
                     bgcolor: "#03318C",
                   }}
                 />
-                <h2 className="text-xl font-bold text-gray-800">{token.symbol}</h2>
-
+                <h2 className="text-lg font-semibold text-gray-800">
+                  {token.symbol}
+                </h2>
               </div>
 
-              <div className="flex items-center text-sm mb-1 text-gray-800">
+              {/* Price */}
+              <div className="flex items-center text-sm mb-1 text-gray-700">
                 <AttachMoneyIcon fontSize="small" className="mr-1 opacity-80" />
                 {formatter.format(token.price_usd)}
               </div>
 
+              {/* Change */}
               <div
-                className={`flex items-center text-sm ${token.change_24h >= 0 ? "text-green-400" : "text-red-400"
+                className={`flex items-center text-sm ${token.change_24h >= 0
+                    ? "text-green-500"
+                    : "text-red-500"
                   }`}
                 title={`${token.change_24h >= 0 ? "Increased" : "Decreased"
                   } by ${Math.abs(token.change_24h).toFixed(2)}%`}
