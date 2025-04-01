@@ -7,6 +7,7 @@ import NewsIsrael from "./components/NewsIsrael";
 import BitcoinPriceList from "./components/bitcoin/BitcoinPriceList";
 import Chip from "@mui/material/Chip";
 import Box from "@mui/material/Box";
+import TradingRecommendations from "./components/trading/TradingRecommendations";
 
 export default function Home() {
   const [featured, setFeatured] = useState(null);
@@ -93,6 +94,25 @@ export default function Home() {
           />
         </Box>
         <BitcoinPriceList />
+      </section>
+      <section className="mb-6">
+        <Box sx={{ display: "flex", justifyContent: "flex-end", mr: 4 }}>
+          <Chip
+            label="Trading Recommendations"
+            color="default"
+            variant="filled"
+            sx={{
+              fontSize: "1",
+              fontFamily: "var(--font-headline)",
+              fontWeight: "bold",
+              bgcolor: "#F2ECE4",
+              color: "#0D0D0D",
+              px: 2,
+              mb: 2, // 👈 adds padding at the bottom
+            }}
+          />
+        </Box>
+        <TradingRecommendations />
       </section>
     </div>
   );
