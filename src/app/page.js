@@ -56,7 +56,7 @@ export default function Home() {
       </section>
 
       {/* Israel News Section */}
-      <section className="mb-6">
+      <section className="mb-3">
         <Box sx={{ display: "flex", justifyContent: "flex-end", mr: 4 }}>
           <Chip
             label="Israel"

@@ -56,7 +56,7 @@ const BitcoinPriceList = () => {
   }, [cryptoData, sortBy]);
 
   return (
-    <div className="min-h-screen py-3 px-3 bg-[#F2F2F2] text-gray-900">
+    <div className="min-h-screen  px-2 bg-[#F2F2F2] text-gray-900">
       <div className="max-w-4xl mx-auto">
 
 
