@@ -1,12 +1,15 @@
 "use client";
+
 import React, { useEffect, useState, useMemo } from "react";
 import { motion, useInView } from "framer-motion";
-import Card from "@mui/material/Card";
-import CardContent from "@mui/material/CardContent";
-import Avatar from "@mui/material/Avatar";
-import Typography from "@mui/material/Typography";
+import {
+  Card,
+  CardContent,
+  Avatar,
+  Typography,
+  Skeleton,
+} from "@mui/material";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
-import Skeleton from "@mui/material/Skeleton";
 
 const NewsCardExample = ({ apiEndpoint }) => {
   const [news, setNews] = useState([]);
@@ -38,6 +41,7 @@ const NewsCardExample = ({ apiEndpoint }) => {
   return (
     <div className="min-h-screen pr-4 py-6">
       <div className="max-w-xl mx-auto space-y-5">
+        {/* Loading State */}
         {loading && (
           <div className="space-y-4">
             {[...Array(3)].map((_, i) => (
@@ -46,15 +50,19 @@ const NewsCardExample = ({ apiEndpoint }) => {
           </div>
         )}
 
+        {/* Error State */}
         {hasError && (
           <div className="text-red-500 text-center">Failed to load news.</div>
         )}
 
+        {/* Empty State */}
         {!loading && !hasError && news.length === 0 && (
           <div className="text-gray-600 text-center">No news available.</div>
         )}
 
-        {!loading && !hasError &&
+        {/* News Cards */}
+        {!loading &&
+          !hasError &&
           news.map((article, index) => (
             <NewsCard key={article._id} article={article} ref={refs[index]} />
           ))}
@@ -88,27 +96,35 @@ const NewsCard = React.forwardRef(({ article }, ref) => {
     >
       <Card
         sx={{
-          display: "flex",
-          alignItems: "center",
+          position: "relative",
           bgcolor: "#FFFFFF",
           borderRadius: 3,
-          color: "#1a1a1a",
           px: 2,
           py: 2,
-          position: "relative",
+          overflow: "hidden",
+          display: "flex", // ✅ Add this line
+          alignItems: "center",
           transition: "0.3s",
-          "&:hover": {
-            boxShadow: "0 8px 20px rgba(0,0,0,0.1)",
+          "&::before": {
+            content: '""',
+            position: "absolute",
+            top: 0,
+            left: 0,
+            width: "100%",
+            height: "100%",
+            backgroundColor: "#000",
+            opacity: 0.03,
+            zIndex: 0,
           },
         }}
-        elevation={2}
       >
+
         <Avatar
           src={isValidImage ? article.image : "/placeholder.jpg"}
           alt={article.headline}
           sx={{
-            width: 72,
-            height: 72,
+            width: 64,
+            height: 64,
             mr: 2,
             border: "2px solid #eaeaea",
           }}
@@ -119,10 +135,10 @@ const NewsCard = React.forwardRef(({ article }, ref) => {
             variant="subtitle1"
             fontWeight={600}
             sx={{
-              lineHeight: 1.4,
               fontSize: "1rem",
               color: "#1a1a1a",
-              pr: 3,
+              pr: 4,
+              lineHeight: 1.4,
             }}
           >
             {article.headline}
@@ -135,7 +151,7 @@ const NewsCard = React.forwardRef(({ article }, ref) => {
             position: "absolute",
             right: 12,
             top: 12,
-            color: "#888",
+            color: "#999",
             transform: "rotate(-45deg)",
           }}
         />
