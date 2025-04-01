@@ -64,7 +64,7 @@ const TradingRecommendations = () => {
         {recommendations.map((token) => (
           <div
             key={token.token}
-            className="bg-white border border-gray-200 rounded-xl shadow-sm hover:shadow-md transition-transform hover:scale-[1.02] p-4"
+            className="bg-[#F2F2F2] border border-gray-200 rounded-xl shadow-sm hover:shadow-md transition-transform hover:scale-[1.02] p-4"
           >
             {/* Token Info */}
             <div className="flex items-center gap-2 mb-2">

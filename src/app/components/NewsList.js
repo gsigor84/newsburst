@@ -98,8 +98,11 @@ const NewsCard = React.forwardRef(({ article }, ref) => {
         sx={{
           display: "flex",
           alignItems: "center",
-          bgcolor: "#FFFFFF",
-          borderRadius: 3,
+          bgcolor: "#F2F2F2",
+          borderTopLeftRadius: 0,        // 👈 Left side square
+          borderBottomLeftRadius: 0,
+          borderTopRightRadius: 12,      // 👈 Right side rounded
+          borderBottomRightRadius: 12,
           px: 2,
           py: 2,
           position: "relative",
@@ -127,7 +130,7 @@ const NewsCard = React.forwardRef(({ article }, ref) => {
             fontWeight={600}
             sx={{
               fontSize: "1rem",
-              color: "#1a1a1a",
+              color: "#0D0D0D",
               pr: 4,
               lineHeight: 1.4,
             }}
@@ -142,12 +145,12 @@ const NewsCard = React.forwardRef(({ article }, ref) => {
             position: "absolute",
             right: 12,
             top: 12,
-            color: "#999",
+            color: "#405F73",
             transform: "rotate(-45deg)",
           }}
         />
       </Card>
-    </motion.a>
+    </motion.a >
   );
 });
 

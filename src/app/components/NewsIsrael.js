@@ -91,15 +91,17 @@ const NewsCard = React.forwardRef(({ article }, ref) => {
         sx={{
           display: "flex",
           alignItems: "center",
-          bgcolor: "#FFFFFF",
-          borderRadius: 3,
-          color: "#1a1a1a",
+          bgcolor: "#F2F2F2",
+          borderTopLeftRadius: 0,        // 👈 Left side square
+          borderBottomLeftRadius: 0,
+          borderTopRightRadius: 12,      // 👈 Right side rounded
+          borderBottomRightRadius: 12,
           px: 2,
           py: 2,
           position: "relative",
           transition: "0.3s",
           "&:hover": {
-            boxShadow: "0 8px 20px rgba(0,0,0,0.1)",
+            boxShadow: "0 8px 20px rgba(0,0,0,0.08)",
           },
         }}
         elevation={2}
@@ -122,7 +124,7 @@ const NewsCard = React.forwardRef(({ article }, ref) => {
             sx={{
               lineHeight: 1.4,
               fontSize: "1rem",
-              color: "#1a1a1a",
+              color: "#0D0D0D",
               pr: 3,
             }}
           >
@@ -136,12 +138,12 @@ const NewsCard = React.forwardRef(({ article }, ref) => {
             position: "absolute",
             right: 12,
             top: 12,
-            color: "#888",
+            color: "#405F73",
             transform: "rotate(-45deg)",
           }}
         />
       </Card>
-    </motion.a>
+    </motion.a >
   );
 });
 

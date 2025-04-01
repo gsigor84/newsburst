@@ -48,7 +48,7 @@ const Navbar = () => {
 
   return (
     <Slide appear={false} direction="down" in={showNavbar}>
-      <AppBar position="sticky" sx={{ backgroundColor: "#fff", color: "#0D0D0D" }} elevation={2}>
+      <AppBar position="sticky" sx={{ backgroundColor: "#0D0D0D", color: "#F2F2F2" }} elevation={2}>
         <Container maxWidth="xl">
           <Toolbar disableGutters>
             {/* 🌍 Logo + Text (Desktop) */}
@@ -63,7 +63,7 @@ const Navbar = () => {
                 display: { xs: "none", md: "flex" },
                 fontWeight: 700,
                 textDecoration: "none",
-                color: "inherit",
+                color: "#F2F2F2",
               }}
             >
               NewsBurst
@@ -114,7 +114,7 @@ const Navbar = () => {
                   key={page.label}
                   component={Link}
                   href={page.path}
-                  sx={{ my: 2, color: "#0D0D0D", display: "block", fontWeight: 600 }}
+                  sx={{ my: 2, color: "#F2F2F2", display: "block", fontWeight: 600 }}
                 >
                   {page.label}
                 </Button>

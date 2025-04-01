@@ -81,7 +81,7 @@ const BitcoinPriceList = () => {
               href={`https://coinmarketcap.com/currencies/${token.symbol.toLowerCase()}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-white border border-gray-200 p-4 rounded-xl shadow-sm hover:shadow-lg transition-transform transform hover:scale-105"
+              className="bg-[#F2F2F2] border border-gray-200 p-4 rounded-xl shadow-sm hover:shadow-lg transition-transform transform hover:scale-105"
             >
               {/* Logo & Symbol */}
               <div className="flex items-center gap-2 mb-2">

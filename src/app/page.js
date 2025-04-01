@@ -31,45 +31,65 @@ export default function Home() {
 
       {/* General News Section */}
       <section className="mb-6">
+        <Box sx={{ display: "flex", justifyContent: "flex-end", mr: 4, pt: 2 }}>
+          <Chip
+            label="Global"
+            color="default"
+            variant="filled"
+            sx={{
+              fontSize: "1rem",
+              fontFamily: "var(--font-headline)",
+              fontWeight: "bold",
+              bgcolor: "#405F73",
+              color: "#F2EFDF",
+              px: 2,
+              borderRadius: 1, // 👈 Makes it more square (use 0 for fully sharp corners)
+              height: "32px",  // Optional: control height if you want a uniform square feel
+            }}
+          />
+        </Box>
         <NewsList apiEndpoint="/api/news" />
       </section>
 
       {/* Asia News Section */}
       <section >
 
-        <Box sx={{ display: "flex", justifyContent: "flex-end", mr: 4 }}>
+        <Box sx={{ display: "flex", justifyContent: "flex-end", mr: 4, pt: 2 }}>
           <Chip
             label="Asia"
             color="default"
             variant="filled"
             sx={{
-              fontSize: "1",
+              fontSize: "1rem",
               fontFamily: "var(--font-headline)",
               fontWeight: "bold",
-              bgcolor: "#F2ECE4",
-              color: "#0D0D0D",
+              bgcolor: "#405F73",
+              color: "#F2EFDF",
               px: 2,
+              borderRadius: 1, // 👈 Makes it more square (use 0 for fully sharp corners)
+              height: "32px",  // Optional: control height if you want a uniform square feel
             }}
           />
         </Box>
-
         <NewsAsia />
       </section>
 
       {/* Israel News Section */}
       <section className="mb-3">
-        <Box sx={{ display: "flex", justifyContent: "flex-end", mr: 4 }}>
+        <Box sx={{ display: "flex", justifyContent: "flex-end", mr: 4, pt: 2 }}>
           <Chip
             label="Israel"
             color="default"
             variant="filled"
             sx={{
-              fontSize: "1",
+              fontSize: "1rem",
               fontFamily: "var(--font-headline)",
               fontWeight: "bold",
-              bgcolor: "#F2ECE4",
-              color: "#0D0D0D",
+              bgcolor: "#405F73",
+              color: "#F2EFDF",
               px: 2,
+              borderRadius: 1, // 👈 Makes it more square (use 0 for fully sharp corners)
+              height: "32px",  // Optional: control height if you want a uniform square feel
             }}
           />
         </Box>
@@ -78,37 +98,40 @@ export default function Home() {
 
       {/* Bitcoin Prices Section */}
       <section className="mb-6">
-        <Box sx={{ display: "flex", justifyContent: "flex-end", mr: 4 }}>
+        <Box sx={{ display: "flex", justifyContent: "flex-end", mr: 4, pt: 2 }}>
           <Chip
             label="Bitcoin Prices"
             color="default"
             variant="filled"
             sx={{
-              fontSize: "1",
+              fontSize: "1rem",
               fontFamily: "var(--font-headline)",
               fontWeight: "bold",
-              bgcolor: "#F2ECE4",
-              color: "#0D0D0D",
+              bgcolor: "#405F73",
+              color: "#F2EFDF",
               px: 2,
+              borderRadius: 1, // 👈 Makes it more square (use 0 for fully sharp corners)
+              height: "32px",  // Optional: control height if you want a uniform square feel
             }}
           />
         </Box>
         <BitcoinPriceList />
       </section>
       <section className="mb-6">
-        <Box sx={{ display: "flex", justifyContent: "flex-end", mr: 4 }}>
+        <Box sx={{ display: "flex", justifyContent: "flex-end", mr: 4, pt: 2 }}>
           <Chip
-            label="Trading Recommendations"
+            label="Recommendations"
             color="default"
             variant="filled"
             sx={{
-              fontSize: "1",
+              fontSize: "1rem",
               fontFamily: "var(--font-headline)",
               fontWeight: "bold",
-              bgcolor: "#F2ECE4",
-              color: "#0D0D0D",
+              bgcolor: "#405F73",
+              color: "#F2EFDF",
               px: 2,
-
+              borderRadius: 1, // 👈 Makes it more square (use 0 for fully sharp corners)
+              height: "32px",  // Optional: control height if you want a uniform square feel
             }}
           />
         </Box>
