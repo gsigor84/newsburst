@@ -96,29 +96,20 @@ const NewsCard = React.forwardRef(({ article }, ref) => {
     >
       <Card
         sx={{
-          position: "relative",
+          display: "flex",
+          alignItems: "center",
           bgcolor: "#FFFFFF",
           borderRadius: 3,
           px: 2,
           py: 2,
-          overflow: "hidden",
-          display: "flex", // ✅ Add this line
-          alignItems: "center",
+          position: "relative",
           transition: "0.3s",
-          "&::before": {
-            content: '""',
-            position: "absolute",
-            top: 0,
-            left: 0,
-            width: "100%",
-            height: "100%",
-            backgroundColor: "#000",
-            opacity: 0.03,
-            zIndex: 0,
+          "&:hover": {
+            boxShadow: "0 8px 20px rgba(0,0,0,0.08)",
           },
         }}
+        elevation={2}
       >
-
         <Avatar
           src={isValidImage ? article.image : "/placeholder.jpg"}
           alt={article.headline}
