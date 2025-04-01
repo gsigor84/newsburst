@@ -18,19 +18,16 @@ const tokenLogos = {
 };
 
 // ✅ Date formatter: "31 Mar 2025 · 20:18"
+// ✅ Format as: "31 Mar 2025"
 const formatDate = (date) => {
   const d = new Date(date);
-  return d
-    .toLocaleString("en-GB", {
-      day: "2-digit",
-      month: "short",
-      year: "numeric",
-      hour: "2-digit",
-      minute: "2-digit",
-      hour12: false,
-    })
-    .replace(",", " ·");
+  return d.toLocaleDateString("en-GB", {
+    day: "2-digit",
+    month: "short",
+    year: "numeric",
+  });
 };
+
 
 const TradingRecommendations = () => {
   const [recommendations, setRecommendations] = useState([]);
@@ -54,11 +51,11 @@ const TradingRecommendations = () => {
   }, []);
 
   return (
-    <section className="mb-12 px-4">
+    <section className="mb-12 px-2">
       {/* Timestamp Header */}
       {lastUpdated && (
-        <div className="text-sm text-gray-500 text-right mb-4 font-medium">
-          Last updated: {formatDate(lastUpdated)}
+        <div className="text-xs text-gray-500 text-right mb-3 pr-13 font-medium">
+          updated: {formatDate(lastUpdated)}
         </div>
       )}
 

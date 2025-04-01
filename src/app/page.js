@@ -108,7 +108,7 @@ export default function Home() {
               bgcolor: "#F2ECE4",
               color: "#0D0D0D",
               px: 2,
-              mb: 2, // 👈 adds padding at the bottom
+
             }}
           />
         </Box>
