@@ -92,20 +92,21 @@ const NewsCard = React.forwardRef(({ article }, ref) => {
           display: "flex",
           alignItems: "center",
           bgcolor: "#F2F2F2",
-          borderTopLeftRadius: 0,        // 👈 Left side square
-          borderBottomLeftRadius: 0,
-          borderTopRightRadius: 12,      // 👈 Right side rounded
-          borderBottomRightRadius: 12,
+          borderTopLeftRadius: 0,       // Left top: square
+          borderBottomLeftRadius: 0,    // Left bottom: square
+          borderTopRightRadius: 12,     // Right top: rounded
+          borderBottomRightRadius: 0,   // Right bottom: square
           px: 2,
           py: 2,
           position: "relative",
-          transition: "0.3s",
+          transition: "0.3s ease-in-out",
+          boxShadow: "0 6px 16px rgba(0, 0, 0, 0.08)", // ⬅️ Custom shadow
           "&:hover": {
-            boxShadow: "0 8px 20px rgba(0,0,0,0.08)",
+            boxShadow: "0 10px 24px rgba(0, 0, 0, 0.12)", // ⬅️ Slightly stronger on hover
           },
         }}
-        elevation={2}
       >
+
         <Avatar
           src={isValidImage ? article.image : "/placeholder.jpg"}
           alt={article.headline}

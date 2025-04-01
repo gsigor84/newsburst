@@ -3,7 +3,6 @@
 import React, { useEffect, useState } from "react";
 import { Avatar, Chip, Typography } from "@mui/material";
 
-// ✅ Token logo map
 const tokenLogos = {
   BTC: "https://cryptologos.cc/logos/bitcoin-btc-logo.png",
   ETH: "https://cryptologos.cc/logos/ethereum-eth-logo.png",
@@ -17,8 +16,7 @@ const tokenLogos = {
   ARB: "https://cryptologos.cc/logos/arbitrum-arb-logo.png",
 };
 
-// ✅ Date formatter: "31 Mar 2025 · 20:18"
-// ✅ Format as: "31 Mar 2025"
+// Format: 31 Mar 2025
 const formatDate = (date) => {
   const d = new Date(date);
   return d.toLocaleDateString("en-GB", {
@@ -27,7 +25,6 @@ const formatDate = (date) => {
     year: "numeric",
   });
 };
-
 
 const TradingRecommendations = () => {
   const [recommendations, setRecommendations] = useState([]);
@@ -52,21 +49,19 @@ const TradingRecommendations = () => {
 
   return (
     <section className="mb-12 px-2">
-      {/* Timestamp Header */}
       {lastUpdated && (
-        <div className="text-xs text-gray-500 text-right mb-3 pr-13 font-medium">
+        <div className="text-xs text-gray-500 text-right mb-3 pr-4 font-medium">
           updated: {formatDate(lastUpdated)}
         </div>
       )}
 
-      {/* Grid Display */}
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
         {recommendations.map((token) => (
           <div
             key={token.token}
-            className="bg-[#F2F2F2] border border-gray-200 rounded-xl shadow-sm hover:shadow-md transition-transform hover:scale-[1.02] p-4"
+            className="bg-[#F2F2F2] border border-gray-200 p-4 shadow-[0_6px_16px_rgba(0,0,0,0.08)] hover:shadow-[0_10px_24px_rgba(0,0,0,0.12)] transition-transform transform hover:scale-[1.03]"
+            style={{ borderRadius: 0 }} // Square corners
           >
-            {/* Token Info */}
             <div className="flex items-center gap-2 mb-2">
               <Avatar
                 src={tokenLogos[token.token]}
@@ -78,13 +73,11 @@ const TradingRecommendations = () => {
               </h3>
             </div>
 
-            {/* Sentiment */}
             <div className="text-sm text-gray-700 mb-2 leading-tight">
               <strong>Hype:</strong> {token.hype} &nbsp;|&nbsp;
               <strong>Fear:</strong> {token.fear}
             </div>
 
-            {/* Recommendation */}
             <Chip
               label={token.recommendation}
               color={token.recommendation === "BUY" ? "success" : "error"}

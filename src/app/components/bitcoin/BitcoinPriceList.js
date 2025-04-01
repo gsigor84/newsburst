@@ -1,11 +1,11 @@
 "use client";
+
 import React, { useEffect, useState, useMemo } from "react";
 import Avatar from "@mui/material/Avatar";
 import AttachMoneyIcon from "@mui/icons-material/AttachMoney";
 import ArrowDropUpIcon from "@mui/icons-material/ArrowDropUp";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 
-// Map symbols to logo URLs
 const tokenLogos = {
   BTC: "https://cryptologos.cc/logos/bitcoin-btc-logo.png",
   ETH: "https://cryptologos.cc/logos/ethereum-eth-logo.png",
@@ -56,11 +56,8 @@ const BitcoinPriceList = () => {
   }, [cryptoData, sortBy]);
 
   return (
-    <div className="min-h-screen  px-2 bg-[#F2F2F2] text-gray-900">
+    <div className="min-h-screen px-2 bg-[#F2F2F2] text-gray-900">
       <div className="max-w-4xl mx-auto">
-
-
-        {/* Loading / Error States */}
         {isLoading && (
           <div className="text-center text-gray-500">Loading prices...</div>
         )}
@@ -73,7 +70,7 @@ const BitcoinPriceList = () => {
           <div className="text-center text-gray-500">No data available.</div>
         )}
 
-        {/* Token Cards */}
+        {/* Grid */}
         <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 mt-4">
           {sortedData.map((token) => (
             <a
@@ -81,9 +78,9 @@ const BitcoinPriceList = () => {
               href={`https://coinmarketcap.com/currencies/${token.symbol.toLowerCase()}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-[#F2F2F2] border border-gray-200 p-4 rounded-xl shadow-sm hover:shadow-lg transition-transform transform hover:scale-105"
+              className="bg-[#F2F2F2] p-4 shadow-[0_6px_16px_rgba(0,0,0,0.08)] hover:shadow-[0_10px_24px_rgba(0,0,0,0.12)] border border-gray-200 transition-transform transform hover:scale-[1.03]"
+              style={{ borderRadius: 0 }} // 👈 fully square card
             >
-              {/* Logo & Symbol */}
               <div className="flex items-center gap-2 mb-2">
                 <Avatar
                   src={tokenLogos[token.symbol]}
@@ -101,17 +98,13 @@ const BitcoinPriceList = () => {
                 </h2>
               </div>
 
-              {/* Price */}
               <div className="flex items-center text-sm mb-1 text-gray-700">
                 <AttachMoneyIcon fontSize="small" className="mr-1 opacity-80" />
                 {formatter.format(token.price_usd)}
               </div>
 
-              {/* Change */}
               <div
-                className={`flex items-center text-sm ${token.change_24h >= 0
-                  ? "text-green-500"
-                  : "text-red-500"
+                className={`flex items-center text-sm ${token.change_24h >= 0 ? "text-green-500" : "text-red-500"
                   }`}
                 title={`${token.change_24h >= 0 ? "Increased" : "Decreased"
                   } by ${Math.abs(token.change_24h).toFixed(2)}%`}
