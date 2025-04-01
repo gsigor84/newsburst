@@ -1,4 +1,5 @@
 "use client";
+
 import React, { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import {
@@ -31,15 +32,19 @@ const Navbar = () => {
   const handleOpenNavMenu = (event) => setAnchorElNav(event.currentTarget);
   const handleCloseNavMenu = () => setAnchorElNav(null);
 
-  // 👇 Scroll hide/show logic
+  // 👇 Scroll hide/show with buffer
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > lastScrollY.current) {
+      const currentScrollY = window.scrollY;
+      const buffer = 10;
+
+      if (currentScrollY > lastScrollY.current + buffer) {
         setShowNavbar(false); // scrolling down
-      } else {
+      } else if (currentScrollY < lastScrollY.current - buffer) {
         setShowNavbar(true); // scrolling up
       }
-      lastScrollY.current = window.scrollY;
+
+      lastScrollY.current = currentScrollY;
     };
 
     window.addEventListener("scroll", handleScroll);
@@ -48,10 +53,17 @@ const Navbar = () => {
 
   return (
     <Slide appear={false} direction="down" in={showNavbar}>
-      <AppBar position="sticky" sx={{ backgroundColor: "#0D0D0D", color: "#F2F2F2" }} elevation={2}>
+      <AppBar
+        position="sticky"
+        sx={{
+          backgroundColor: "#0D0D0D",
+          color: "#F2F2F2",
+        }}
+        elevation={2}
+      >
         <Container maxWidth="xl">
           <Toolbar disableGutters>
-            {/* 🌍 Logo + Text (Desktop) */}
+            {/* 🌍 Desktop Logo */}
             <PublicIcon sx={{ display: { xs: "none", md: "flex" }, mr: 1 }} />
             <Typography
               variant="h6"
@@ -82,14 +94,19 @@ const Navbar = () => {
                 sx={{ display: { xs: "block", md: "none" } }}
               >
                 {pages.map((page) => (
-                  <MenuItem key={page.label} onClick={handleCloseNavMenu} component={Link} href={page.path}>
+                  <MenuItem
+                    key={page.label}
+                    onClick={handleCloseNavMenu}
+                    component={Link}
+                    href={page.path}
+                  >
                     <Typography textAlign="center">{page.label}</Typography>
                   </MenuItem>
                 ))}
               </Menu>
             </Box>
 
-            {/* 🌍 Logo + Text (Mobile) */}
+            {/* 🌍 Mobile Logo */}
             <PublicIcon sx={{ display: { xs: "flex", md: "none" }, mr: 1 }} />
             <Typography
               variant="h6"
@@ -101,20 +118,30 @@ const Navbar = () => {
                 display: { xs: "flex", md: "none" },
                 fontWeight: 700,
                 textDecoration: "none",
-                color: "inherit",
+                color: "#F2F2F2",
               }}
             >
               NewsBurst
             </Typography>
 
-            {/* 🖥️ Desktop Navigation */}
-            <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" }, justifyContent: "flex-end" }}>
+            {/* 🖥️ Desktop Nav */}
+            <Box
+              sx={{
+                flexGrow: 1,
+                display: { xs: "none", md: "flex" },
+                justifyContent: "flex-end",
+              }}
+            >
               {pages.map((page) => (
                 <Button
                   key={page.label}
                   component={Link}
                   href={page.path}
-                  sx={{ my: 2, color: "#F2F2F2", display: "block", fontWeight: 600 }}
+                  sx={{
+                    my: 2,
+                    color: "#F2F2F2",
+                    fontWeight: 600,
+                  }}
                 >
                   {page.label}
                 </Button>

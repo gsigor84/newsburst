@@ -26,50 +26,33 @@ export default function Home() {
     fetchFeatured();
   }, []);
 
+  const chipStyles = {
+    fontSize: "1rem",
+    fontFamily: "var(--font-headline)",
+    fontWeight: "bold",
+    bgcolor: "#405F73",
+    color: "#F2EFDF",
+    px: 2,
+    borderRadius: 1,
+    height: "32px",
+    boxShadow: "0 2px 8px rgba(0,0,0,0.1)", // ✅ Uniform soft shadow
+  };
+
   return (
     <div className="bg-[#F2F2F2] text-gray-900 min-h-screen">
 
       {/* General News Section */}
       <section className="mb-6">
         <Box sx={{ display: "flex", justifyContent: "flex-end", mr: 4, pt: 2 }}>
-          <Chip
-            label="Global"
-            color="default"
-            variant="filled"
-            sx={{
-              fontSize: "1rem",
-              fontFamily: "var(--font-headline)",
-              fontWeight: "bold",
-              bgcolor: "#405F73",
-              color: "#F2EFDF",
-              px: 2,
-              borderRadius: 1, // 👈 Makes it more square (use 0 for fully sharp corners)
-              height: "32px",  // Optional: control height if you want a uniform square feel
-            }}
-          />
+          <Chip label="Global" color="default" variant="filled" sx={chipStyles} />
         </Box>
         <NewsList apiEndpoint="/api/news" />
       </section>
 
       {/* Asia News Section */}
-      <section >
-
+      <section>
         <Box sx={{ display: "flex", justifyContent: "flex-end", mr: 4, pt: 2 }}>
-          <Chip
-            label="Asia"
-            color="default"
-            variant="filled"
-            sx={{
-              fontSize: "1rem",
-              fontFamily: "var(--font-headline)",
-              fontWeight: "bold",
-              bgcolor: "#405F73",
-              color: "#F2EFDF",
-              px: 2,
-              borderRadius: 1, // 👈 Makes it more square (use 0 for fully sharp corners)
-              height: "32px",  // Optional: control height if you want a uniform square feel
-            }}
-          />
+          <Chip label="Asia" color="default" variant="filled" sx={chipStyles} />
         </Box>
         <NewsAsia />
       </section>
@@ -77,21 +60,7 @@ export default function Home() {
       {/* Israel News Section */}
       <section className="mb-3">
         <Box sx={{ display: "flex", justifyContent: "flex-end", mr: 4, pt: 2 }}>
-          <Chip
-            label="Israel"
-            color="default"
-            variant="filled"
-            sx={{
-              fontSize: "1rem",
-              fontFamily: "var(--font-headline)",
-              fontWeight: "bold",
-              bgcolor: "#405F73",
-              color: "#F2EFDF",
-              px: 2,
-              borderRadius: 1, // 👈 Makes it more square (use 0 for fully sharp corners)
-              height: "32px",  // Optional: control height if you want a uniform square feel
-            }}
-          />
+          <Chip label="Israel" color="default" variant="filled" sx={chipStyles} />
         </Box>
         <NewsIsrael />
       </section>
@@ -99,41 +68,15 @@ export default function Home() {
       {/* Bitcoin Prices Section */}
       <section className="mb-6">
         <Box sx={{ display: "flex", justifyContent: "flex-end", mr: 4, pt: 2 }}>
-          <Chip
-            label="Bitcoin Prices"
-            color="default"
-            variant="filled"
-            sx={{
-              fontSize: "1rem",
-              fontFamily: "var(--font-headline)",
-              fontWeight: "bold",
-              bgcolor: "#405F73",
-              color: "#F2EFDF",
-              px: 2,
-              borderRadius: 1, // 👈 Makes it more square (use 0 for fully sharp corners)
-              height: "32px",  // Optional: control height if you want a uniform square feel
-            }}
-          />
+          <Chip label="Bitcoin Prices" color="default" variant="filled" sx={chipStyles} />
         </Box>
         <BitcoinPriceList />
       </section>
+
+      {/* Recommendations Section */}
       <section className="mb-6">
         <Box sx={{ display: "flex", justifyContent: "flex-end", mr: 4, pt: 2 }}>
-          <Chip
-            label="Recommendations"
-            color="default"
-            variant="filled"
-            sx={{
-              fontSize: "1rem",
-              fontFamily: "var(--font-headline)",
-              fontWeight: "bold",
-              bgcolor: "#405F73",
-              color: "#F2EFDF",
-              px: 2,
-              borderRadius: 1, // 👈 Makes it more square (use 0 for fully sharp corners)
-              height: "32px",  // Optional: control height if you want a uniform square feel
-            }}
-          />
+          <Chip label="Recommendations" color="default" variant="filled" sx={chipStyles} />
         </Box>
         <TradingRecommendations />
       </section>
